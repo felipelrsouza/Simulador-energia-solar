@@ -25,15 +25,10 @@ if (isset($_POST["mail"]) && isset($_POST["consumption"]) && isset($_POST["count
         $city_id = '18';
     }
 
-    $hostname = "localhost";
-    $database = "solar";
-    $user = "root";
-    $password = "";
-
-    $mysqli = new mysqli($hostname, $user, $password, $database);
+    include 'connectiondata.php';
 
     date_default_timezone_set('UTC');
-    $datadia = date('l jS \of F Y h:i:s A');
+    $dateandtime = date('l jS \of F Y h:i:s A');
 
     $stmt = $mysqli->prepare("INSERT INTO entries (mail, subscribe, consumption, countrystate, city_id, dateandtime) VALUES (?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("ssssss", $mail, $subscribe, $consumption, $countrystate, $city_id, $dateandtime);
@@ -43,8 +38,7 @@ if (isset($_POST["mail"]) && isset($_POST["consumption"]) && isset($_POST["count
         $stmt->close();
         $mysqli->close();
 
-        echo "Deu certo. Abrir resultado.php";
-        //include 'Resultado.php'; //If the registration is successful, open the results page.
+        include 'results.php'; //If the registration is successful, open the results page.
 
         exit;
     } else {

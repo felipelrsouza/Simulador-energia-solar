@@ -1,0 +1,536 @@
+body {
+  background-color: white;
+  background-image: url('https://beluga.eng.br/fundo5.jpg');
+  margin: 0;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  font-family: 'Cairo', sans-serif;
+}
+
+header {
+  height: 85px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.479);
+  color: white;
+  border-style: solid;
+  border-width: 0 0 1px 0;
+  border-color: rgba(233, 233, 233, 0.356);
+  text-align: center;
+}
+
+.logo {
+  margin-top: 14px;
+  height: 60px;
+
+}
+
+h1 {
+  display: block;
+  font-weight:normal;
+  font-size: 20px;
+  margin: 0;
+}
+
+.show-results-title {
+  margin: auto;
+  text-align: center;
+  margin-bottom: 13px;
+  color: white;
+  text-shadow: -1px 1px 3px rgba(0, 0, 0, 0.521);
+}
+
+.city-name {
+  white-space: nowrap;
+}
+
+.show-results {
+  background-image: linear-gradient(rgba(7, 12, 25, 0.6), rgba(7, 12, 25, 0.7));
+  padding-top: 0%;
+
+  font-size: 14px;
+  color: white;
+}
+
+.show-results-body {
+
+  width: 99%;
+  max-width: 900px;
+  margin: 0 auto;
+
+}
+
+.show-results-item {
+  font-weight: 600;
+  color: rgb(220, 220, 220);
+}
+
+.show-results-system-info {
+  width: fit-content;
+  text-shadow: -2px 1px 2px rgba(0, 0, 0, 0.55);
+}
+
+
+
+/* The animation code */
+@keyframes month-animation {
+  from {
+    height: 0%;
+  }
+}
+
+@keyframes text-month-animation {
+  from {
+    opacity: 0%;
+  }
+}
+
+/* unvisited link */
+a:link {
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  text-decoration: underline;
+  text-decoration-color: rgb(20, 40, 75);
+}
+
+h2 {
+  margin-top: 0px;
+  padding-left: 3px;
+  font-size: 130%;
+  font-weight: bold;
+  text-shadow: -1px 1px 2px black;
+}
+
+p {
+  display: block;
+  margin-top: 0px;
+  margin-bottom: 0em;
+  margin-left: 0;
+  margin-right: 0;
+
+  font-size: 16px;
+  letter-spacing: 0.3px;
+  text-shadow: -1px 1px 2px black;
+}
+
+.show-results-economy-data {
+  margin-top: 14px;
+  display: inline-flex;
+  flex-flow: row wrap;
+
+  
+}
+
+.show-results-subtitle {
+  background-color: none;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+  text-shadow: -1px 1px 3px black;
+  display: block;
+    margin-right: 35px;
+
+}
+
+#textendfim {
+
+}
+
+#blp2 {
+  background-color: rgb(247, 247, 247);
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 10px;
+  padding-bottom: 0px;
+}
+
+#sblp2 {
+  color: black;
+  width: 99%;
+  max-width: 900px;
+  margin: 0 auto;
+
+  font-size: 16px;
+  text-align: left;
+}
+
+.meses:before,
+.meses:after {
+  content: '';
+  display: table;
+}
+
+.meses:after {
+  clear: both;
+}
+
+.meses {
+  display: inline-flex;
+  flex-flow: row wrap;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 7px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: none;
+  height: 220px;
+  /*270px; */
+  width: 98%;
+  zoom: 1;
+  /* For IE 6/7 (trigger hasLayout) */
+}
+
+.submeses:before,
+.submeses:after {
+  content: '';
+  display: table;
+}
+
+.submeses:after {
+  clear: both;
+}
+
+.submeses {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  height: 23px;
+  width: 98%;
+  zoom: 1;
+  /* For IE 6/7 (trigger hasLayout) */
+
+  font-size: 100%;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.v {
+  padding-top: 3%;
+  animation-name: text-month-animation;
+  animation-duration: 2s;
+}
+
+.titsubmeses {
+  text-align: center;
+  border-style: solid;
+  border-color: transparent;
+  border-width: 1px;
+  margin-right: 1.8%;
+  width: 6.2%;
+  animation-name: text-month-animation;
+  animation-duration: 2s;
+}
+
+.titsubmesesul {
+  text-align: center;
+  width: 6.2%;
+  animation-name: text-month-animation;
+  animation-duration: 2s;
+}
+
+.submes {
+  margin-right: 1.8%;
+  width: 6.2%;
+  color: rgb(10, 10, 20, 0.8);
+
+  font-size: 14px;
+  font-weight: bold;
+  justify-content: center;
+  letter-spacing: 1px;
+  writing-mode: vertical-rl;
+  text-orientation: sideways;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  background-image: linear-gradient(
+    rgba(250, 250, 250, 0.81),
+    rgba(255, 255, 255, 1)
+  );
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.6);
+  border-top-color: rgba(230, 230, 255, 0.2);
+  border-width: 1px;
+  animation-name: month-animation;
+  animation-duration: 2s;
+}
+
+.submesul {
+  position: relative;
+  float: left;
+  margin-left: 0 auto;
+  width: 6.2%;
+  color: rgb(10, 10, 50, 0.8);
+
+  font-size: 14px;
+  font-weight: bold;
+  justify-content: center;
+  letter-spacing: 1px;
+  writing-mode: vertical-rl;
+  text-orientation: sideways;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  background-image: linear-gradient(
+    rgba(250, 250, 250, 0.83),
+    rgba(255, 255, 255, 1)
+  );
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.6);
+  border-top-color: rgba(230, 230, 255, 0.2);
+  border-width: 1px;
+  animation-name: month-animation;
+  animation-duration: 2s;
+}
+
+.tit {
+  color: #0d2647;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 14px;
+}
+
+#formpai {
+  display: flex;
+  flex-direction: column;
+  color: black;
+  font-size: 15px;
+  width: 804px;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  margin: auto;
+}
+
+#formquebra {
+  display: inline-flex;
+  flex-flow: row wrap;
+}
+
+.formtxt {
+  padding-top: 14px;
+  padding-right: 10px;
+  padding-left: 7px;
+  margin: auto;
+  vertical-align: middle;
+}
+
+.base {
+  height: 30px;
+  width: 250px;
+  font-size: 15px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(195, 195, 195);
+}
+
+#inputend {
+  width: 520px;
+}
+
+button {
+  height: 28px;
+  width: 85px;
+  font-size: 15px;
+  color: white;
+  background-color: rgb(2, 110, 160);
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(0, 100, 150);
+  border-radius: 3px;
+}
+
+button:hover {
+  background-color: rgb(12, 120, 170);
+  border-color: rgb(10, 110, 160);
+}
+
+.txtcond {
+  background-color: none;
+  margin: auto;
+  margin-bottom: 1.5em;
+  width: 62%;
+  min-width: 330px;
+  font-size: 13px;
+}
+
+.mySlides {
+  display: none;
+}
+
+.w3-left,
+.w3-right,
+.w3-badge {
+  cursor: pointer;
+}
+
+.w3-badge {
+  height: 13px;
+  width: 13px;
+  padding: 0;
+}
+
+.hr {
+  background-color: #ebebeb;
+  height: 1px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#pergfreq {
+  width: 100%;
+  padding-bottom: 5px;
+  display: inline-flex;
+  flex-flow: row wrap;
+}
+
+.subper {
+  border-left-width: 2px;
+  border-right-width: 15px;
+  border-top: 0;
+  border-bottom: 0;
+  border-style: solid;
+  border-color: transparent;
+  text-align: center;
+  width: 50%;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+@media only screen and (max-width: 1200px) {
+  body {
+    background-size: auto 950px;
+  }
+}
+
+@media only screen and (max-width: 805px) {
+  body {
+    background-size: auto 800px;
+  }
+
+  #blp1 {
+    background-image: linear-gradient(
+      rgba(7, 12, 25, 0.55),
+      rgba(7, 12, 25, 0.65)
+    );
+  }
+
+  .p {
+    font-size: 15px;
+    letter-spacing: 0.5px;
+  }
+
+  .meses {
+    height: 150px;
+    margin-left: 1%;
+  }
+
+  .submeses {
+    margin-left: 1%;
+  }
+
+  .submes {
+    margin-right: 1.3%;
+    width: 7.1%;
+    color: rgb(10, 10, 20, 0.8);
+    font-size: 13px;
+    min-height: 15%;
+  }
+
+  .submesul {
+    width: 7.3%;
+    color: rgb(10, 10, 20, 0.8);
+    font-size: 13px;
+  }
+
+  .titsubmeses {
+    text-align: center;
+    border-style: solid;
+    border-color: transparent;
+    border-width: 1px;
+    margin-right: 1%;
+    width: 7.3%;
+  }
+
+  .titsubmesesul {
+    text-align: center;
+    width: 7.3%;
+  }
+
+  .txtcond {
+    width: 92%;
+  }
+
+  #textendfim {
+    text-align: center;
+  }
+
+  #formpai {
+    width: initial;
+    margin-left: auto;
+  }
+
+  #formquebra {
+    display: flex;
+    flex-flow: column;
+  }
+
+  .formtxt {
+    width: 90%;
+    padding-top: 10px;
+    padding-right: 0px;
+    padding-left: 2%;
+    margin: 0 auto;
+    vertical-align: middle;
+  }
+
+  .base {
+    width: 95%;
+  }
+
+  #inputend {
+    width: 95%;
+  }
+
+  button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 28px;
+    width: 80px;
+    border-width: 0px;
+  }
+
+  #pergfreq {
+    width: 100%;
+    padding-bottom: 15px;
+  }
+
+  .subper {
+    width: 98%;
+    margin: auto;
+    border-width: 0px;
+    border-style: none;
+  }
+}
+
+.rodape {
+  background-color: white;
+  color: #2e384b;
+  text-align: center;
+  font-size: 13px;
+  margin-top: 0px;
+  margin-bottom: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-size: auto 770px;
+  }
+
+  #blp1 {
+    background-image: linear-gradient(
+      rgba(40, 60, 65, 0.5),
+      rgba(40, 60, 65, 0.8)
+    );
+  }
+}
