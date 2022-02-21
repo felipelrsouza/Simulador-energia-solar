@@ -159,13 +159,14 @@ $budget = -0.6412 * ($number_of_plates ^ 2) + 1747.7 * ($number_of_plates) + 816
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&family=Patua+One&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         #month-1 {
             height: <?php echo round(100 * ($irradiation_city[1] / $greater_irradiation), 3) . "%"; ?>;
+
         }
 
         #month-2 {
@@ -219,152 +220,162 @@ $budget = -0.6412 * ($number_of_plates ^ 2) + 1747.7 * ($number_of_plates) + 816
 </head>
 
 <body>
-
-<header>
-
-<a href='https://www.beluga.eng.br/simuladorsolar/' target="_blank"><img class='logo' src='./images/logo.png' /></a>
-
-</header>
-
-    <section class='show-results'>
-        <div class='show-results-body'>
-
-            <div class="show-results-title">
-                <h1>Simulação de sistema de geração solar para <span class='city-name'><?php echo $city; ?></span></h1>
+    <section class='block-1-bcg'>
+        <div class='header-results'>
+            <a href='https://www.beluga.eng.br/simuladorsolar/' target="_blank"><img class='logo' src='./images/logo.png' /></a>
+    </section>
+    <section class='block-1'>
+        <div class='block-1-child-container'>
+            <section class="block-1-child-title">
+                Simulação <span class='hidden-on-mobile'>de sistema de geração solar </span>para <span class='title-city-name'><?php echo $city; ?></span>
+            </section>
+            <section class="block-1-child-system-info">
+                <span class='block-1-child-item'>Placas:</span> <?php echo $number_of_plates . " " . $unit_txt . " de " . $plate330["potency"] . "w (" . (str_replace(['.'], ',', $number_of_plates * $plate330["potency"] / 1000)) . "kWp).<br>"; ?>
+                <span class='block-1-child-item'>Geração:</span> média de <?php echo number_format($average_solar_production, 2, ',', '.') . " kWh/mês<span class='hidden-on-mobile'> (" . number_format($average_solar_production, 2, ',', '.') . " kWh/ano)</span>.<br>"; ?>
+                <span class='block-1-child--item'>Área mín. nec.: </span> <?php echo ($plate330["area"] * $number_of_plates) . "m² de telhado ou superfície.</p>"; ?>
+            </section>
+            <section class='block-1-child-economy-data'>
+                <div class='block-1-child-subtitle'><span class='block-1-child-item'>Economia estimada por ano:</span><br><span class='block-1-child-detail'>R$</span>
+                    <span class='block-1-child-price'><?php echo number_format($average_anual_economy, 2, ',', '.'); ?></span><span class='block-1-child-detail'>.</span>
+                </div>
+                <div class='block-1-child-subtitle'>Economia em 25 anos*:</span> <br><span class='block-1-child-detail'>R$</span>
+                    <span class='block-1-child-price'><?php echo number_format($average_anual_economy * $plate330["lifespan"], 2, ',', '.'); ?></span><span class='block-1-child-detail'>.</span><br>
+                </div>
+            </section>
+            <br>
+            <section class='block-1-child-subtitle'>Economia ao longo do ano em reais**:</section>
+            <section class='block-1-graphic'>
+                <div id='month-1' class='block-1-graphic-bar'>
+                    <div class='block-1-graphic-bar-value'><?php echo number_format(($plate_production_1 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></div>
+                </div>
+                <div id='month-2' class='block-1-graphic-bar'>
+                    <span class='block-1-graphic-bar-value'> <?php echo number_format(($plate_production_2 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></span>
+                </div>
+                <div id='month-3' class='block-1-graphic-bar'>
+                    <span class='block-1-graphic-bar-value'><?php echo number_format(($plate_production_3 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></span>
+                </div>
+                <div id='month-4' class='block-1-graphic-bar'>
+                    <span class='block-1-graphic-bar-value'><?php echo number_format(($plate_production_4 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></span>
+                </div>
+                <div id='month-5' class='block-1-graphic-bar'>
+                    <span class='block-1-graphic-bar-value'><?php echo number_format(($plate_production_5 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></span>
+                </div>
+                <div id='month-6' class='block-1-graphic-bar'>
+                    <span class='block-1-graphic-bar-value'><?php echo number_format(($plate_production_6 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></span>
+                </div>
+                <div id='month-7' class='block-1-graphic-bar'>
+                    <span class='block-1-graphic-bar-value'><?php echo number_format(($plate_production_7 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></span>
+                </div>
+                <div id='month-8' class='block-1-graphic-bar'>
+                    <span class='block-1-graphic-bar-value'><?php echo number_format(($plate_production_8 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></span>
+                </div>
+                <div id='month-9' class='block-1-graphic-bar'>
+                    <span class='block-1-graphic-bar-value'><?php echo number_format(($plate_production_9 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></span>
+                </div>
+                <div id='month-10' class='block-1-graphic-bar'>
+                    <span class='block-1-graphic-bar-value'><?php echo number_format(($plate_production_10 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></span>
+                </div>
+                <div id='month-11' class='block-1-graphic-bar'>
+                    <span class='block-1-graphic-bar-value'><?php echo number_format(($plate_production_11 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></span>
+                </div>
+                <div id='month-12' class='block-1-graphic-bar'>
+                    <span class='block-1-graphic-bar-value'><?php echo number_format(($plate_production_12 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></span>
+                </div>
+            </section>
+            <div class='block-1-graphic-under-block'>
+                <div class='block-1-graphic-under-text'>Jan</div>
+                <div class='block-1-graphic-under-text'>Fev</div>
+                <div class='block-1-graphic-under-text'>Mar</div>
+                <div class='block-1-graphic-under-text'>Abr</div>
+                <div class='block-1-graphic-under-text'>Mai</div>
+                <div class='block-1-graphic-under-text'>Jun</div>
+                <div class='block-1-graphic-under-text'>Jul</div>
+                <div class='block-1-graphic-under-text'>Ago</div>
+                <div class='block-1-graphic-under-text'>Set</div>
+                <div class='block-1-graphic-under-text'>Out</div>
+                <div class='block-1-graphic-under-text'>Nov</div>
+                <div class='block-1-graphic-under-text'>Dez</div>
             </div>
-            <div class="show-results-system-info">
-                <span class='show-results-item'>Placas:</span> <?php echo $number_of_plates . " " . $unit_txt . " de " . $plate330["potency"] . "w (" . (str_replace(['.'], ',', $number_of_plates * $plate330["potency"] / 1000)) . "kWp).<br>"; ?>
-                <span class='show-results-item'>Geração:</span> média de <?php echo number_format($average_solar_production, 2, ',', '.') . " kWh/mês (" . number_format($average_solar_production, 2, ',', '.') . " kWh/ano).<br>"; ?>
-                <span class='show-results-item'>Área mín. nec.: </span> <?php echo ($plate330["area"] * $number_of_plates) . "m² de telhado ou superfície.</p>"; ?>
-            </div>
-            <div class='show-results-economy-data'>
-                <div class='show-results-subtitle'><span class='show-results-item'>Economia estimada por ano: <br><span style='font-size: 15px; font-weight: bold;'>R$</span>
-                    <h2><?php echo number_format($average_anual_economy, 2, ',', '.'); ?></h2><span style='font-size: 15px; font-weight: bold;'>.</span>
+            <section class='block-1-child-economy-data'>
+                <div class='block-1-child-subtitle'><span class='block-1-child-item'>Custo estimado do sistema:</span><br><span class='block-1-child-price-detail'>R$</span>
+                    <span class='block-1-child-price'><?php echo number_format($budget * 0.947368, 2, ',', '.') . "</span><span class='block-1-child-price-detail'> a R$</span><span class='block-1-child-price'>" . number_format($budget * 1.052632, 2, ',', '.'); ?></span><span class='block-1-child-price-detail'>.</span>
                 </div>
-                <div class='show-results-subtitle'>Economia em 25 anos*: <br><span style='font-size: 15px; font-weight: bold;'>R$</span>
-                    <h2><?php echo number_format($average_anual_economy * $plate330["lifespan"], 2, ',', '.'); ?></h2><span style='font-size: 15px; font-weight: bold;'>.</span><br>
+                <div class='block-1-child-economy-data-note'>*Tempo em que as placas atingem 80% de eficiência. **Estimativa com base nos dados
+                    públicos da CRESESB e nos custos da concessionária para 2021.
                 </div>
-            </div>
-            <p style='margin-bottom: 7px;'>Economia ao longo do ano em reais**:</p>
+            </section>
 
-            <div class='meses'>
-                <div class='submes' id='month-1'>
-                    <div class='v'><?php echo number_format(($plate_production_1 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></div>
-                </div>
-                <div class='submes' id='month-2'>
-                    <div class='v'> <?php echo number_format(($plate_production_2 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></div>
-                </div>
-                <div class='submes' id='month-3'>
-                    <div class='v'><?php echo number_format(($plate_production_3 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></div>
-                </div>
-                <div class='submes' id='month-4'>
-                    <div class='v'><?php echo number_format(($plate_production_4 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></div>
-                </div>
-                <div class='submes' id='month-5'>
-                    <div class='v'><?php echo number_format(($plate_production_5 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></div>
-                </div>
-                <div class='submes' id='month-6'>
-                    <div class='v'><?php echo number_format(($plate_production_6 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></div>
-                </div>
-                <div class='submes' id='month-7'>
-                    <div class='v'><?php echo number_format(($plate_production_7 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></div>
-                </div>
-                <div class='submes' id='month-8'>
-                    <div class='v'><?php echo number_format(($plate_production_8 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></div>
-                </div>
-                <div class='submes' id='month-9'>
-                    <div class='v'><?php echo number_format(($plate_production_9 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></div>
-                </div>
-                <div class='submes' id='month-10'>
-                    <div class='v'><?php echo number_format(($plate_production_10 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></div>
-                </div>
-                <div class='submes' id='month-11'>
-                    <div class='v' id='v11'><?php echo number_format(($plate_production_11 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></div>
-                </div>
-                <div class='submesul' id='month-12'>
-                    <div class='v'><?php echo number_format(($plate_production_12 * $tariff) / (1 - $taxes), 2, ',', '.'); ?></div>
-                </div>
-            </div>
-            <div class='submeses'><span class='titsubmeses'>Jan</span><span class='titsubmeses'>Fev</span><span class='titsubmeses'>Mar</span><span class='titsubmeses'>Abr</span><span class='titsubmeses'>Mai</span><span class='titsubmeses'>Jun</span><span class='titsubmeses'>Jul</span><span class='titsubmeses'>Ago</span><span class='titsubmeses'>Set</span><span class='titsubmeses'>Out</span><span class='titsubmeses'>Nov</span><span class='titsubmesesul'>Dez</span></div>
-            <div class='caixatextend'>
-                <div id='textendfim' class='textend'>Custo estimado do sistema: <br><span style='font-size: 15px; font-weight: bold;'>De R$</span>
-                    <h2><?php echo number_format($budget * 0.947368, 2, ',', '.') . "</span><span style='font-size: 15px; font-weight: bold;'> a R$</span><h2>" . number_format($budget * 1.052632, 2, ',', '.'); ?></span><span style='font-size: 15px; font-weight: bold;'>.</span>
-                </div>
-                <div class='txtcond'>*Tempo em que as placas atingem 80% de eficiência. **Estimativa com base nos dados
-                    públicos da CRESESB e nos custos da concessionária para 2021.</div>
-            </div>
+        </div>
 
+    </section>
+    </div>
+    <section class='block-2'>
+        <div class='block-2-child-container'>
+            <h1><span class='hidden-on-mobile'>Ficou interessado? </span>Peça um orçamento detalhado.</h1>
+            <p><span class='hidden-on-mobile'>Aproveite o último ano com insenção de subsídios. </span>Preencha seus dados de contato para saber mais sobre valores,
+                opções de financiamento, detalhes de instalação, e mais.</p>
+
+            <div class='block-2-form'>
+                <form method='post'>
+                    <div class='block-2-form-input'>
+                        <div class='block-2-form-input-box'>Telefone e/ou WhatsApp:<br><input class='block-2-form-input-txt' name='phone' onkeypress='return isNumberKey(event)' type='text'></input></div>
+                        <div class='block-2-form-input-box'>E-mail*:<br><input class='block-2-form-input-txt' name='mail' value='<?php echo $mail; ?>' type='email' required></input></div>
+                        <div class='block-2-form-input-box'>Cidade de instalação*:<br><input class='block-2-form-input-txt' name='city' value='<?php echo $city . " (MS)"; ?>' type='text' value='Campo Grande - MS' required></input></div>
+                    </div>
+
+                    <input class='block-2-form-input-box' name='ocorreu' value='1' type='hidden'></input>
+                    <br>
+                    <div class='block-2-form-btn-out'><button>Solicitar</button></div>
+                </form>
+            </div>
         </div>
     </section>
 
-    <div id='blp2'>
-        <div id='sblp2'>
+    <section class='block-3'>
+        <h1>Por que ter energia solar?</h1><br>
 
-            <div class='tit' style='margin-top: 7px;'>Ficou interessado? Peça um orçamento detalhado</div>
-            <b>Aproveite o último ano com insenção de subsídios.</b> Preencha seus dados de contato para saber mais sobre valores,
-            opções de financiamento, detalhes de instalação, e mais.
-            <div id='formpai'>
-                <form method='post'>
-                    <div id='formquebra'>
-                        <div class='formtxt'>Telefone e/ou WhatsApp:<br><input class='base' name='phone' onkeypress='return isNumberKey(event)' type='text'></input></div>
-                        <div class='formtxt'>E-mail*:<br><input class='base' name='mail' value='<?php echo $mail; ?>' type='email' required></input></div>
-                        <div class='formtxt'>Cidade de instalação*:<br><input class='base' name='city' value='<?php echo $city . " (MS)"; ?>' type='text' value='Campo Grande - MS' required></input></div>
-                    </div>
-
-                    <input class='base' name='ocorreu' value='1' type='hidden'></input>
-                    <br><br>
-                    <center>
-                        <button>Solicitar</button>
-                    </center>
-                </form>
+        <div class="block-3-boxes">
+            <div class='block-3-boxes-child'><img class='block-3-boxes-child-img' src="https://www.beluga.eng.br/icon1.png" />
+                <p>
+                    Perfeita para a sua casa, comércio ou indústria.
+                    <br>A energia solar pode ser instalada em diversos tipos de imóveis.
+                </p>
             </div>
-
-            <div class='tit'>Por que ter energia solar?</div><br>
-            <div id='pergfreq'>
-                <div class='subper'>
-                    <center><img src="https://www.beluga.eng.br/icon1.png" style="width: 70px;" /></center>
-                    <br>
-
-                    Perfeita para a sua casa, comércio ou indústria.<br>A energia solar pode ser instalada em diversos tipos de imóveis.<br><br>
-                    <br>
-
-                    <center><img src="https://www.beluga.eng.br/icon3.png" style="width: 70px;" /></center>
-                    <br>
+            <div class='block-3-boxes-child'><img class='block-3-boxes-child-img' src="https://www.beluga.eng.br/icon3.png" />
+                <p>
                     A conta de energia aumenta ano após ano.
                     <br>Mais de 30% de aumento nos últimos 5 anos.
-
-                    <br><br>
-                </div>
-                <div class='subper'>
-                    <center><img src="https://www.beluga.eng.br/icon2.png" style="width: 70px;" /></center>
-                    <br>
+                </p>
+            </div>
+            <div class='block-3-boxes-child'><img class='block-3-boxes-child-img' src="https://www.beluga.eng.br/icon2.png" />
+                <p>
                     Economia enquanto ajuda o meio ambiente.<br>
                     Energia limpa sem emissão de CO2.
-                    <br><br>
-                    <br>
-
-                    <center><img src="https://www.beluga.eng.br/icon4.png" style="width: 70px;" /></center>
-                    <br>
+                </p>
+            </div>
+            <div class='block-3-boxes-child'><img class='block-3-boxes-child-img' src="https://www.beluga.eng.br/icon4.png" />
+                <p>
                     Estado com posição geográfica favorável à energia solar.
                     <br>Maior eficiência, com mais energia gerada por área.
-                    <br><br>
-                </div>
+                </p>
             </div>
-
-            <div class='tit'>Sobre a Voltac Energia Solar</div>
-
-            A Voltac Energia Solar é uma empresa focada no projeto e instalação de energia solar, com experiência de execução tanto na cidade quanto no campo.
-            <br><br>
-            <center>
-                <img src="https://www.beluga.eng.br/img1.jpeg" style="width:90%;" />
-            </center>
-            <br>
-
-
-
         </div>
-    </div>
 
+    </section>
+
+    <section class='block-4'>
+        <h1>Sobre a Voltac Energia Solar</h1>
+
+        <p>A Voltac Energia Solar é uma empresa focada no projeto e instalação de energia solar, com experiência de execução tanto na cidade quanto no campo.
+        </p>
+
+        <div class='block-4-img'></div>
+
+    </section>
+
+    <div class="footer"><br>
+        Beluga - @belugaengenharia
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -407,6 +418,6 @@ $budget = -0.6412 * ($number_of_plates ^ 2) + 1747.7 * ($number_of_plates) + 816
         }
     </script>
 
-    <div class='rodape'>
-        <b>Beluga - @belugaengenharia</b>
-    </div>
+</body>
+
+</html>

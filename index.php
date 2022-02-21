@@ -103,7 +103,7 @@ if (isset($_POST["has-happened"])) {
 
             </body>
 
-            </html>l
+            </html>
 
             <br><br>
 
@@ -142,22 +142,22 @@ if (isset($_POST["has-happened"])) {
             <meta name="viewport" content="initial-scale=1.0" />
             <title>Simulador de energia solar - BELUGA Engenharia</title>
 
-            <link rel="stylesheet" href="stylesheet.css" />
+            <link rel="stylesheet" href="style_results.css" />
 
             <script src="script.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
             <link rel='preconnect' href='https://fonts.gstatic.com'>
-            <link href='https://fonts.googleapis.com/css2?family=PT+Sans&family=Patua+One&display=swap' rel='stylesheet'>
+            <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
 
         </head>
 
         <body>
-            <header>
+            <section class='header-index'>
 
                 <a href='https://www.beluga.eng.br/simuladorsolar/' target="_blank"><img class='logo' src='./images/logo.png' /></a>
 
-            </header>
+            </section>
 
 
             <h1>Simule seu sistema de geração de energia solar.</h1>

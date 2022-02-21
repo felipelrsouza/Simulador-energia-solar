@@ -11,7 +11,7 @@
 h1 {
   display: block;
   font-size: 20px;
-  color: #0d2647;
+  color: #0d2647;  
 }
 
 h2 {
@@ -41,18 +41,17 @@ body {
   color: black;
 }
 
-.header-index {
+header {
   height: 75px;
   width: auto;
   background-image: url('./images/header-background.jpg');
   color: white;
   border-style: solid;
   border-width: 0 0 1px 0;
-  border-color: rgb(27, 27, 27);
-  text-align: center;
+  border-color: rgb(27, 27, 27); 
 }
 
-.header-results {
+header .results{
   background-color: rgba(0, 0, 0, 0.6);
   background-image: none;
   border-color: rgba(233, 233, 233, 0.356);
@@ -63,20 +62,9 @@ body {
   margin-top: 12px;
   height: 55px;
 }
-/* Start of the index page code only */
-.partner-info {
-  margin-top: 50px;
-  color: #0d2647;
-  font-weight: bold;
-}
 
-
-
-
-/* End of the index page code only */
-
-/* Start of the results page code only */
 /* Start of the first container code */
+
 .block-1-bcg {
   /* Set the background of the first container */
   background-image: url('https://beluga.eng.br/fundo5.jpg');
@@ -242,6 +230,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 300px);
 }
+
 
 .block-2-form-input-txt {
   height: 30px;
@@ -429,9 +418,9 @@ button:hover {
   }
 }
 
-.block-3-boxes-child-img {
-  width: 50px;
-}
+  .block-3-boxes-child-img {
+    width: 50px;
+  }
 
 footer {
   background-color: white;
