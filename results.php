@@ -1,22 +1,22 @@
 <?php
 
-function round_up($number, $precision = 2)
+function round_up($number, $precision = 2) //To round numbers when needed.
 {
     $fig = (int) str_pad('1', $precision, '0');
     return (ceil($number * $fig) / $fig);
 }
 
-function round_down($number, $precision = 2)
+function round_down($number, $precision = 2) //To round numbers when needed.
 {
     $fig = (int) str_pad('1', $precision, '0');
     return (floor($number * $fig) / $fig);
 }
 
-include 'connectiondata.php';
+include 'connectiondata.php'; //MySQL connection file.
 
-$consulta = "SELECT * FROM cities WHERE id = '" . $city_id . "'";
+$query = "SELECT * FROM cities WHERE id = '" . $city_id . "'"; //Gets the solar data from the user's city.
 
-$con      = $mysqli->query($consulta) or die($mysqli->error);
+$con      = $mysqli->query($query) or die($mysqli->error);
 
 while ($irrad = $con->fetch_array()) {
 
@@ -39,28 +39,27 @@ while ($irrad = $con->fetch_array()) {
     ];
 }
 
+$taxes = 0.3551; // Taxes percentage.
 
-$building_type = 0; // 0-> Residencial 1-> Rural 2-> Comercial, serv e outros 3-> Industrial
-$taxes = 0.3551;
+$building_type = 0; // 0-> Residential 1-> Rural 2-> Commercial, serv 3-> Industry
 
 
-//Define a tarifa de acordo com o tipo de imóvel
-switch ($building_type) {
+switch ($building_type) { //Set tariff according to the type of property.
     case 0:
-        $tariff = 0.69365; // Residencial - 2022
+        $tariff = 0.69365; // Residential - Reference year: 2022
         break;
     case 1:
-        $tariff = 0.61040; // Rural - 2022
+        $tariff = 0.61040; // Rural - Reference year: 2022
         break;
     case 2:
-        $tariff = 0.69365; //Comercial e serv. - 2022
+        $tariff = 0.69365; // Commercial, serv - Reference year: 2022
         break;
     case 3:
-        $tariff = 0.69365; // Industrial - 2022
+        $tariff = 0.69365; // Industry - Reference year: 2022
         break;
 }
 
-// Aplica tarifa social quando aplicável
+//Apply social tariff if needed.
 if ($building_type == 0 and $consumption <= 30) {
     $tariff = $tariff * (1 - 0.65);
 } elseif ($building_type == 0 and $consumption <= 100) {
@@ -69,61 +68,51 @@ if ($building_type == 0 and $consumption <= 30) {
     $tariff = $tariff * (1 - 0.10);
 }
 
-$monthly_bill = round(($consumption * $tariff) / (1 - $taxes), 2); //Calcula o valor da conta de energia paga atualmente
+//$monthly_bill = round(($consumption * $tariff) / (1 - $taxes), 2); //Allow user to insert monthly consumption instead of monthly bill, if needed.
+$monthly_bill = $consumption;
 $annual_bill = round(($monthly_bill * 12), 2);
 
-// Dados das placas solares
+// Solar plate data
 $plate330 = [
     "name" => "Default plate of 330w",
-    "potency" => 330,
-    "area" => 2,
+    "potency" => 330, //in watts.
+    "area" => 2, //in m².
     "efficiency" => 0.75,
-    "lifespan" => 25,
+    "lifespan" => 25, //in years.
 ];
 
 $plate335 = [
     "name" => "Default plate of 335w",
-    "potency" => 335,
-    "area" => 2,
+    "potency" => 335, //in watts.
+    "area" => 2, //in m².
     "efficiency" => 0.75,
-    "lifespan" => 25,
+    "lifespan" => 25, //in years.
 ];
 
 $plate360 = [
     "name" => "Default plate of 360w",
-    "potency" => 360,
-    "area" => 2,
+    "potency" => 360, //in watts.
+    "area" => 2, //in m².
     "efficiency" => 0.75,
-    "lifespan" => 25,
+    "lifespan" => 25, //in years.
 ];
 
 $plate400 = [
     "name" => "Default plate of 400w",
-    "potency" => 400,
-    "area" => 2,
+    "potency" => 400, //in watts.
+    "area" => 2, //in m².
     "efficiency" => 0.75,
-    "lifespan" => 25,
+    "lifespan" => 25, //in years.
 ];
 
 
+$greater_irradiation = max($irradiation_city); //Take the greater irradiation month to build graphic (set what 100% will be).
 
-$greater_irradiation = max($irradiation_city);
+$number_of_plates = round_up($monthly_bill / (((12 * $plate330["potency"] * 30.417 * $irradiation_city["md"] * $plate330["efficiency"]) / 1000) / 12), 0); // Calculate the number of plates in the system.
 
-$irradiation_city_month = 5;
-//$diasmes=30.417;
+if ($number_of_plates == 1) {$unit_tx = 'unidade';}else{$unit_tx = 'unidades';}; 
 
-$number_of_plates = round_up($monthly_bill / (((12 * $plate330["potency"] * 30.417 * $irradiation_city["md"] * $plate330["efficiency"]) / 1000) / 12), 0);
-
-if ($number_of_plates == 1) {
-
-    $unit_txt = 'unidade';
-} else {
-
-    $unit_txt = 'unidades';
-}
-
-
-$average_solar_production = ($number_of_plates * $plate330["potency"] * 30.417 * $irradiation_city["md"] * $plate330["efficiency"]) / 1000;
+$average_solar_production = ($number_of_plates * $plate330["potency"] * 30.417 * $irradiation_city["md"] * $plate330["efficiency"]) / 1000; // Average production per month in R$.
 $anual_solar_production = (12 * $average_solar_production); //valor produzido por placa por ano
 $anual_economy = $anual_solar_production * $tariff;
 $average_anual_economy = ($anual_solar_production * $tariff) / (1 - $taxes);
