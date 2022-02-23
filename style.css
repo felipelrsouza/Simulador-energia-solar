@@ -38,50 +38,50 @@ body {
   background-color: white;
   margin: 0;
   font-family: 'Cairo', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   color: black;
 }
 
-.index-header, .results-header{
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 75px;
   width: auto;
   border-style: solid;
   border-width: 0 0 1px 0;
-  border-color: rgb(27, 27, 27);
-  text-align: center;
 }
 
-.index-header {
+.header.index {
   background-image: url('./images/header-background.jpg');
   border-color: rgb(27, 27, 27);
 }
 
-.results-header {
-  background-color: rgba(0, 0, 0, 0.6);
+.header.results {
+  background-color: rgba(7, 20, 45, 0.6);
   border-color: rgba(233, 233, 233, 0.356);
 }
 
-.logo {
-  margin-top: 12px;
+.header > a > img {
   height: 55px;
 }
-/* Start of the index page code only */
-.index-main{
-  text-align: center;
-}
 
-.index-form {
+/* Start of the index page code only */
+.index-main {
   margin: auto;
   color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: left;
-  width: 66%;
-  min-width: 290px;
+  width: auto;
 }
-.index-form-input-field,
-.index-form-select-field {
+
+.index-main > p {
+  text-align: center;
+}
+
+.index-main > form > input,
+.index-main > form > select {
   font-size: 14px;
   border-width: 1px;
   border-style: solid;
@@ -91,29 +91,29 @@ body {
   margin-bottom: 5px;
 }
 
-.index-form-input-field {
+.index-main > form > input {
   height: 27px;
   width: 65%;
   min-width: 280px;
 }
 
-.index-form-input-field:focus {
+.index-main > form > input:focus {
   border-width: 1px;
   border-color: #026e9f;
 }
 
-.index-form-select-field {
+.index-main > form > select {
   width: 65%;
   min-width: 285px;
   height: 32px;
 }
 
-.index-form-select-field:focus {
+.index-main > form > select:focus {
   border-width: 1px;
   border-color: #026e9f;
 }
 
-.index-form-input-subscribe {
+.index-main-subscribe {
   margin: auto;
   margin-top: 5px;
   margin-bottom: 15px;
@@ -121,7 +121,7 @@ body {
   font-size: 14px;
 }
 
-.index-btn {
+.index-main > form > button {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -135,27 +135,23 @@ body {
   border-radius: 3px;
 }
 
-.index-btn:hover {
+.index-main > button:hover {
   background-color: rgb(12, 120, 170);
   border-color: rgb(10, 110, 160);
 }
 
-.index-partner-info {
+.index-partner {
   margin-top: 50px;
   color: #0d2647;
   font-weight: bold;
+  text-align: center;
 }
 
-.index-partner-info {
-  margin-top: 50px;
-  color: #0d2647;
-  font-weight: bold;
+.index-partner > img {
+  width: 190px;
 }
 
 @media only screen and (max-width: 805px) {
-  .index-text {
-    text-align: left;
-  }
   .hide-on-mobile {
     display: none;
   }
@@ -164,79 +160,78 @@ body {
 
 /* Start of the results page code only */
 /* Start of the first container code */
-.block-1-bcg {
+.top-bcg {
   /* Set the background of the first container */
   background-image: url('https://beluga.eng.br/fundo5.jpg');
+  background-position: center top;
   background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
 }
 
 .title-city-name {
   white-space: nowrap;
 }
 
-.block-1 {
-  background-image: linear-gradient(
-    rgba(7, 12, 25, 0.6),
-    rgba(7, 12, 25, 0.75)
-  );
-  text-shadow: -1px 1px 3px rgba(0, 0, 0, 0.521);
-  color: white;
-  margin-bottom: 10px;
+.block-1-bcg {
+  background-image: linear-gradient(rgba(7, 20, 45, 0.5), rgba(7, 20, 45, 0.6));
 }
 
-.block-1-child-container {
-  width: 100%;
+.block-1 {
   max-width: 900px;
   margin: 0 auto;
+  margin-bottom: 10px;
+  text-shadow: -1px 1px 3px rgba(0, 0, 0, 0.7);
+  color: white;
 }
 
-.block-1-child-title {
+.block-1 > h1 {
   margin: auto;
   text-align: center;
-  margin-bottom: 13px;
-  font-size: 20px;
   color: white;
+  margin-bottom: 20px;
+  font-size: 24px;
 }
 
-.block-1-child-container-item {
+.block-1-item {
   font-weight: 600;
-  color: rgb(220, 220, 220);
 }
 
-.block-1-child-system-info {
-  width: fit-content;
-}
-
-.block-1-child-price {
+.block-1-price {
   padding-left: 3px;
-  font-size: 170%;
-  font-weight: bold;
-  color: white;
-}
-
-.block-1-child-price-detail {
-  font-size: 15px;
+  font-size: 135%;
   font-weight: bold;
 }
 
-.block-1-child-economy-data {
+.block-1-detail {
+  font-weight: bold;
+}
+
+.block-1-container {
   margin-top: 5px;
-  display: inline-flex;
-  flex-flow: row wrap;
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
   min-height: 90px;
+  align-items: center;
 }
 
-.block-1-child-subtitle {
-  background-color: none;
-  font-size: 15px;
-  margin-right: 35px;
+.block-1-container > div {
+  height: fit-content;
 }
 
-.block-1-child-economy-data-note {
-  margin: auto;
-  width: 60%;
-  min-width: 330px;
+.block-1-item-left {
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.block-1-note {
+  margin-left: auto;
+  width: auto;
   font-size: 13px;
+  max-width: 500px;
+  height: fit-content;
+  text-align: justify;
 }
 
 /* Start of the graphic's code */
@@ -256,7 +251,8 @@ body {
   width: 100%;
 }
 
-.block-1-graphic-bar {
+.block-1-graphic > div {
+  /* Graphic bar style */
   width: 73%;
   margin-left: 10%;
   background-image: linear-gradient(
@@ -271,7 +267,8 @@ body {
   animation-duration: 2s;
 }
 
-.block-1-graphic-bar-value {
+.block-1-graphic > div > div {
+  /* Graphic-bar text */
   width: 100%;
   display: flex;
   justify-content: center;
@@ -285,14 +282,14 @@ body {
   writing-mode: vertical-rl;
 }
 
-.block-1-graphic-under-block {
+.block-1-graphic-under {
   display: grid;
   grid-template-columns: repeat(12, 8.35%);
   align-items: end;
   width: 100%;
 }
 
-.block-1-graphic-under-text {
+.block-1-graphic-under > div {
   width: 100%;
   text-align: center;
   animation-name: text-month-animation;
@@ -305,51 +302,43 @@ body {
 .block-2 {
   margin: 0 auto;
   padding-top: 5px;
-}
-
-.block-2-child-container {
   max-width: 900px;
   margin: 0 auto;
-  font-size: 15px;
-  text-align: left;
-}
-
-.block-2-form {
+  font-size: 16px;
   color: black;
 }
 
-.block-2-form-input-box {
-  padding-top: 9px;
-  padding-right: 6px;
-  padding-left: 6px;
-  margin: auto;
+.form > div {
+  flex: auto;
+  padding: 5px;
 }
 
-.block-2-form-input {
-  display: grid;
-  grid-template-columns: repeat(3, 300px);
+.form {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.block-2-form-input-txt {
+.form > div > input {
   height: 30px;
-  width: 285px;
-  font-size: 15px;
+  width: 99%;
   border-width: 1px;
   border-style: solid;
   border-color: rgb(195, 195, 195);
 }
 
-.block-2-form-btn-out {
-  width: fit-content;
-  margin: auto;
-  margin-bottom: 10px;
+.form-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  width: 99%;
 }
 
-button {
+.form-btn > button {
   height: 28px;
   width: 85px;
-  font-size: 15px;
   color: white;
+  font-size: 16px;
   background-color: rgb(2, 110, 160);
   border-width: 1px;
   border-style: solid;
@@ -365,47 +354,33 @@ button:hover {
 
 /* Start of the third container code */
 .block-3 {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
-.block-3-boxes {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding-top: 3px;
-  padding-bottom: 10px;
-}
-
-.block-3-boxes-child {
-  margin-top: 7px;
-  margin-bottom: 7px;
+.block-3 > div {
+  flex: 1 400px;
+  margin: 5px;
   text-align: center;
 }
 
-.block-3-boxes-child-img {
+.block-3 > div > img {
   width: 70px;
 }
 /* End of the second container code */
 
 /* Start of the fourth container code */
-.block-4 {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  padding-bottom: 3px;
-  font-size: 15px;
-}
 
-.block-4-img {
-  margin: auto;
-  width: 100%;
+.about-img {
+  width: 99%;
+  margin: 0 auto;
   height: 260px;
   background: url('https://www.beluga.eng.br/img1.jpeg') no-repeat 50% 80%;
   border-style: solid;
   border-width: 1px;
   border-color: #bebebe;
-  margin-bottom: 15px;
 }
 
 /* End of the second container code */
@@ -421,17 +396,21 @@ button:hover {
   font-weight: bold;
   width: 100%;
   height: 90px;
+  margin-top: 15px;
 }
 
 /* Start of the code for mobile*/
 @media only screen and (max-width: 805px) {
   h1 {
     font-size: 18px;
-    font-weight: 600;
     padding-left: 5px;
     padding-right: 5px;
   }
 
+  .block-1 > h1 {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
   p {
     padding-left: 5px;
     padding-right: 5px;
@@ -443,29 +422,38 @@ button:hover {
     display: none;
   }
 
-  body {
-    font-size: 16px;
-  }
-
-  header {
+  .header {
     height: 60px;
     background-color: rgba(0, 0, 0, 0.5);
   }
 
-  .logo {
+  .header > a > img {
     margin-top: 14px;
     height: 35px;
   }
 
-  .block-1-child-system-info {
-    padding-left: 5px;
+  .block-1-container {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    min-height: 90px;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .block-1-child-economy-data {
-    padding-left: 5px;
+  .block-1-container > div {
+    height: fit-content;
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 15px;
   }
 
-  .block-1-child-price {
+  .block-1-price {
+    padding-left: 3px;
+    font-weight: bold;
     font-size: 135%;
   }
 
@@ -492,13 +480,6 @@ button:hover {
     grid-template-columns: 1fr;
   }
 
-  .block-2-form-input-box {
-    width: 90%;
-    padding-top: 7px;
-    padding-right: 5px;
-    padding-left: 5px;
-  }
-
   .block-2-form-input-txt {
     width: 100%;
   }
@@ -510,14 +491,6 @@ button:hover {
     width: 80px;
     border-width: 0px;
   }
-
-  .block-3-boxes {
-    grid-template-columns: 1fr;
-  }
-}
-
-.block-3-boxes-child-img {
-  width: 50px;
 }
 
 footer {
@@ -525,6 +498,5 @@ footer {
   color: #2e384b;
   text-align: center;
   font-size: 13px;
-  margin-top: 0px;
-  margin-bottom: 30px;
+  margin-top: 15px;
 }

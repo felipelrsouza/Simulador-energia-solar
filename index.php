@@ -47,7 +47,6 @@ if (isset($_POST["has-happened"])) {
     if (isset($_POST["phone"])) {
 
         $phone = $_POST["phone"];
-        
     } else {
 
         $phone = 0;
@@ -134,60 +133,61 @@ if (isset($_POST["has-happened"])) {
         </head>
 
         <body>
-            <section class='index-header'>
-                <a href='https://www.beluga.eng.br/simuladorsolar/' target="_blank"><img class='logo' src='./images/logo.png' /></a>
+            <section class='header index'>
+                <a href='https://www.beluga.eng.br/simuladorsolar/' target="_blank"><img src='./images/logo.png' /></a>
             </section>
             <section class="index-main">
                 <h1>Simule seu sistema de geração de energia solar.</h1>
-                <div class="index-text">
-                    <span class="hide-on-mobile">A energia solar está proporcionando independência energética para cada vez mais familias, comércios e industrias.<br></span>
-                    Faça uma simulação e descubra o quanto pode economizar com um sistema de geração de energia solar.<br><br>
-                </div>
-                <section class='index-form'>
-                    <form method='post'>
-                        Valor mensal da conta de energia (R$):<br>
-                        <input class='index-form-input-field' type='text' onkeyup='oneDot(this)' onkeypress='return isNumberKey(event)' name='consumption' placeholder='0,00' required /><br>
-                        Estado:<br><select class="index-form-select-field" name="countrystate">
-                            <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
-                        </select><br>
-                        Cidade:<br>
+
+                <p><span class="hide-on-mobile">A energia solar está proporcionando independência energética para cada vez mais familias, comércios e industrias.<br></span>
+                    Faça uma simulação e descubra o quanto pode economizar com um sistema de geração de energia solar.</p>
+
+                <form method='post'>
+                    Valor mensal da conta de energia (R$):<br>
+                    <input type='text' onkeyup='oneDot(this)' onkeypress='return isNumberKey(event)' name='consumption' placeholder='0,00' required /><br>
+                    Estado:<br><select name="countrystate">
+                        <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                    </select><br>
+                    Cidade:<br>
+                    <?php
+                    include "connectiondata.php";
+                    if ($mysqli->connect_errno) {
+                        echo "An error occurred when trying to connect to the database." . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+                    }
+                    $sql = "SELECT * FROM cities";
+                    $con      = $mysqli->query($sql) or die($mysqli->error);
+                    ?>
+                    <select name="city_id">';
                         <?php
-                        include "connectiondata.php";
-                        if ($mysqli->connect_errno) {
-                            echo "An error occurred when trying to connect to the database." . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-                        }
-                        $sql = "SELECT * FROM cities";
-                        $con      = $mysqli->query($sql) or die($mysqli->error);
-                        ?>
-                        <select class="index-form-select-field" name="city_id">';
-                            <?php
-                            while ($irrad = $con->fetch_array()) {
-                                if ($irrad['city'] == 'Campo Grande') {
-                                    echo '<option value="' . $irrad['id'] . '" selected>' . $irrad['city'] . '</option>';
-                                } else {
-                                    echo '<option value="' . $irrad['id'] . '">' . $irrad['city'] . '</option>';
-                                }
+                        while ($irrad = $con->fetch_array()) {
+                            if ($irrad['city'] == 'Campo Grande') {
+                                echo '<option value="' . $irrad['id'] . '" selected>' . $irrad['city'] . '</option>';
+                            } else {
+                                echo '<option value="' . $irrad['id'] . '">' . $irrad['city'] . '</option>';
                             }
-                            ?>
-                        </select><br>
-                        Seu e-mail:<br>
-                        <input class="index-form-input-field" type="email" name="mail" required />
-                        <br>
-                        <?php
+                        }
                         ?>
-                        <div class="index-form-input-subscribe">
-                            <input type='checkbox' name='subscribe' value='yes'>
-                            <label for='subscribe'><span class="index-input-subscribe-txt">Quero receber novidades no e-mail.</span>
-                            </label>
-                            </input>
-                        </div>
-                        <button class='index-btn'>Simular</button>
-                    </form>
-                </section>
-                <section class="index-partner-info">
+                    </select><br>
+                    Seu e-mail:<br>
+                    <input type="email" name="mail" required />
+                    <br>
+                    <?php
+                    ?>
+                    <div class="index-main-subscribe">
+                        <input type='checkbox' name='subscribe' value='yes'>
+                        <label for='subscribe'><span class="index-input-subscribe-txt">Quero receber novidades no e-mail.</span>
+                        </label>
+                        </input>
+                    </div>
+                    <button>Simular</button>
+                </form>
+                <div class="index-partner">
                     Em parceria com<br>
-                    <img style='width: 190px;' src='https://www.beluga.eng.br/voltac_logo.jpg' />
-                </section>
+                    <img src='https://www.beluga.eng.br/voltac_logo.jpg' />
+                    </div>
+                <div class="footer"><br>
+                    Beluga - @belugaengenharia
+                </div>
         </body>
 
         </html>
