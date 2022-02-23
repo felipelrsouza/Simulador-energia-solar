@@ -417,8 +417,7 @@ button:hover {
     font-size: 16px;
   }
 
-  .hidden-on-mobile {
-    /* Hide elements that shouldn't be visible on mobile*/
+  .hidden-on-mobile { /* Hide elements that shouldn't be visible on mobile*/
     display: none;
   }
 
@@ -459,14 +458,13 @@ button:hover {
 
   .block-1-graphic {
     height: 125px;
-    margin-top: 7px;
   }
 
-  .block-1-graphic-under-block {
+  .block-1-graphic-under {
     width: 99%;
   }
 
-  .block-1-graphic-under-text {
+  .block-1-graphic-under > div  {
     writing-mode: vertical-rl;
     display: flex;
     justify-content: left;
@@ -474,22 +472,6 @@ button:hover {
     width: 99%;
     padding-top: 5px;
     padding-left: 10%;
-  }
-
-  .block-2-form-input {
-    grid-template-columns: 1fr;
-  }
-
-  .block-2-form-input-txt {
-    width: 100%;
-  }
-
-  button {
-    margin-top: 0px;
-    margin-bottom: 20px;
-    height: 28px;
-    width: 80px;
-    border-width: 0px;
   }
 }
 
@@ -499,4 +481,13 @@ footer {
   text-align: center;
   font-size: 13px;
   margin-top: 15px;
+}
+
+/* Success page code */
+.index-success {
+  margin: auto;
+  color: black;
+  width: 800px;
+  text-align: center;
+
 }

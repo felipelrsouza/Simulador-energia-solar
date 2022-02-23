@@ -15,7 +15,6 @@ function round_down($number, $precision = 2) //To round numbers when needed.
 include 'connectiondata.php'; //MySQL connection file.
 
 $query = "SELECT * FROM cities WHERE id = '" . $city_id . "'"; //Gets the solar data from the user's city.
-
 $con      = $mysqli->query($query) or die($mysqli->error);
 
 while ($irrad = $con->fetch_array()) {
@@ -42,7 +41,6 @@ while ($irrad = $con->fetch_array()) {
 $taxes = 0.3551; // Taxes percentage.
 
 $building_type = 0; // 0-> Residential 1-> Rural 2-> Commercial, serv 3-> Industry
-
 
 switch ($building_type) { //Set tariff according to the type of property.
     case 0:
@@ -105,22 +103,22 @@ $plate400 = [
     "lifespan" => 25, //in years.
 ];
 
-
 $greater_irradiation = max($irradiation_city); //Take the greater irradiation month to build graphic (set what 100% will be).
 
 $number_of_plates = round_up($monthly_bill / (((12 * $plate330["potency"] * 30.417 * $irradiation_city["md"] * $plate330["efficiency"]) / 1000) / 12), 0); // Calculate the number of plates in the system.
 
-if ($number_of_plates == 1) {
+if ($number_of_plates == 1) { 
     $unit_txt = 'unidade';
 } else {
     $unit_txt = 'unidades';
 };
 
 $average_solar_production = ($number_of_plates * $plate330["potency"] * 30.417 * $irradiation_city["md"] * $plate330["efficiency"]) / 1000; // Average production per month in R$.
-$anual_solar_production = (12 * $average_solar_production); //valor produzido por placa por ano
-$anual_economy = $anual_solar_production * $tariff;
-$average_anual_economy = ($anual_solar_production * $tariff) / (1 - $taxes);
+$anual_solar_production = (12 * $average_solar_production); // Average anual production R$.
+$anual_economy = $anual_solar_production * $tariff; // Average anual production R$.
+$average_anual_economy = ($anual_solar_production * $tariff) / (1 - $taxes); // Average anual economy R$.
 
+// Production for each month in R$.
 $plate_production[1] = round(($number_of_plates * $plate330["potency"] * 31 * $irradiation_city[1] * $plate330["efficiency"]) / 1000, 2);
 $plate_production[2] = round(($number_of_plates * $plate330["potency"] * 29 * $irradiation_city[2] * $plate330["efficiency"]) / 1000, 2);
 $plate_production[3] = round(($number_of_plates * $plate330["potency"] * 31 * $irradiation_city[3] * $plate330["efficiency"]) / 1000, 2);
@@ -134,24 +132,22 @@ $plate_production[10] = round(($number_of_plates * $plate330["potency"] * 31 * $
 $plate_production[11] = round(($number_of_plates * $plate330["potency"] * 30 * $irradiation_city[11] * $plate330["efficiency"]) / 1000, 2);
 $plate_production[12] = round(($number_of_plates * $plate330["potency"] * 31 * $irradiation_city[12] * $plate330["efficiency"]) / 1000, 2);
 
-$budget = -0.6412 * ($number_of_plates ^ 2) + 1747.7 * ($number_of_plates) + 8163.6;
+$budget = -0.6412 * ($number_of_plates ^ 2) + 1747.7 * ($number_of_plates) + 8163.6; // Total cost.
+
+// Show results page.
 
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultado da simulação - BELUGA Engenharia</title>
-
     <link rel="stylesheet" href="style.css">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="script.js"></script>
     <meta charset="UTF-8">
@@ -161,21 +157,16 @@ $budget = -0.6412 * ($number_of_plates ^ 2) + 1747.7 * ($number_of_plates) + 816
         for ($x = 1; $x <= 12; $x++) {
             echo "#month-" . $x . " {height: " . (round(100 * ($irradiation_city[$x] / $greater_irradiation), 3)) . "%;}\n";
         }
-
         ?>
     </style>
 </head>
-
 <body>
     <div class='top-bcg'>
         <section class='header results'>
             <a href='https://www.beluga.eng.br/simuladorsolar/' target="_blank"><img src='./images/logo.png' /></a>
-
-
         </section>
         <div class='block-1-bcg'>
             <section class='block-1'>
-
                 <h1>Simulação <span class='hidden-on-mobile'>de sistema de geração solar </span>para <span class='title-city-name'><?php echo $city; ?></span></h1>
                 <div class='block-1-container'>
                     <div>
@@ -190,7 +181,6 @@ $budget = -0.6412 * ($number_of_plates ^ 2) + 1747.7 * ($number_of_plates) + 816
                         <span class='block-1-price'><?php echo number_format($average_anual_economy * $plate330["lifespan"], 2, ',', '.'); ?></span><span class='block-1-detail'>.</span>
                     </div>
                 </div>
-
                 <span class='block-1-item'>Economia ao longo do ano em reais**:</span>
                 <section class='block-1-graphic'>
                     <?php
@@ -221,30 +211,23 @@ $budget = -0.6412 * ($number_of_plates ^ 2) + 1747.7 * ($number_of_plates) + 816
                         públicos da CRESESB e nos custos da concessionária para 2021.
                     </div>
                 </div>
-
             </section>
-
         </div>
     </div>
-
     </div>
     <section class='block-2'>
         <h1><span class='hidden-on-mobile'>Ficou interessado? </span>Peça um orçamento detalhado.</h1>
         <p><span class='hidden-on-mobile'>Aproveite o último ano com insenção de subsídios. </span>Preencha seus dados de contato para saber mais sobre valores,
             opções de financiamento, detalhes de instalação, e mais.</p>
-
         <form method='post'>
             <div class='form'>
                 <div>Cidade de instalação*:<br><input name='city' value='<?php echo $city . " (MS)"; ?>' type='text' value='Campo Grande - MS' required></input></div>
                 <div>Telefone e/ou WhatsApp:<br><input name='phone' onkeypress='return isNumberKey(event)' type='text'></input></div>
                 <div>E-mail*:<br><input name='mail' value='<?php echo $mail; ?>' type='email' required></input></div>
-
                 <input name='has-happened' value='1' type='hidden'></input>
                 <div class='form-btn'><button>Solicitar</button></div>
             </div>
-
         </form>
-
         <h1>Por que ter energia solar?</h1><br>
         <section class='block-3'>
             <div><img src="https://www.beluga.eng.br/icon1.png" />
@@ -272,16 +255,12 @@ $budget = -0.6412 * ($number_of_plates ^ 2) + 1747.7 * ($number_of_plates) + 816
                 </p>
             </div>
         </section>
-
         <h1>Sobre a Voltac Energia Solar</h1>
         <p>A Voltac Energia Solar é uma empresa focada no projeto e instalação de energia solar, com experiência de execução tanto na cidade quanto no campo.</p>
         <div class='about-img'></div>
-
     </section>
-
     <div class="footer"><br>
         Beluga - @belugaengenharia
     </div>
 </body>
-
 </html>
