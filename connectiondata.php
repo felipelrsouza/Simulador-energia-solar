@@ -14,7 +14,7 @@ $password = "";
 
 //External server connection data
 $hostname = "";
-$sdatabase = "";
+$database = "";
 $user = "";
 $password = "";
 

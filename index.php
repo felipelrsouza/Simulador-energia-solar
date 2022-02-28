@@ -119,9 +119,10 @@ if (isset($_POST["has-happened"])) {
                 Beluga - @belugaengenharia
             </div>
         </body>
+
         </html>
 
-<?php
+    <?php
         //Connection established.
         exit;
     } else {
@@ -134,6 +135,7 @@ if (isset($_POST["has-happened"])) {
     ?>
         <!DOCTYPE html>
         <html lang="pt-BR">
+
         <head>
             <meta charset="UTF-8" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -145,6 +147,7 @@ if (isset($_POST["has-happened"])) {
             <link rel='preconnect' href='https://fonts.gstatic.com'>
             <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
         </head>
+
         <body>
             <section class='header index'>
                 <a href='https://www.beluga.eng.br/simuladorsolar/' target="_blank"><img src='./images/logo.png' /></a>
@@ -164,11 +167,12 @@ if (isset($_POST["has-happened"])) {
                     include "connectiondata.php";
                     if ($mysqli->connect_errno) {
                         echo "An error occurred when trying to connect to the database." . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-                    }
-                    $sql = "SELECT * FROM cities";
-                    $con      = $mysqli->query($sql) or die($mysqli->error);
+                    } else {
+                        $sql = "SELECT * FROM cities";
+                        $con      = $mysqli->query($sql) or die($mysqli->error);
+
                     ?>
-                    <select name="city_id">';
+                        <select name="city_id">';
                         <?php
                         while ($irrad = $con->fetch_array()) {
                             if ($irrad['city'] == 'Campo Grande') {
@@ -177,24 +181,25 @@ if (isset($_POST["has-happened"])) {
                                 echo '<option value="' . $irrad['id'] . '">' . $irrad['city'] . '</option>';
                             }
                         }
+                    }
                         ?>
-                    </select><br>
-                    Seu e-mail:<br>
-                    <input type="email" name="mail" required />
-                    <br>
-                    <?php
-                    ?>
-                    <div class="index-main-subscribe">
-                        <input type='checkbox' name='subscribe' value='yes'>
-                        <label for='subscribe'><span class="index-input-subscribe-txt">Quero receber novidades no e-mail.</span>
-                        </label>
-                        </input>
-                    </div>
-                    <button>Simular</button>
+                        </select><br>
+                        Seu e-mail:<br>
+                        <input type="email" name="mail" required />
+                        <br>
+                        <?php
+                        ?>
+                        <div class="index-main-subscribe">
+                            <input type='checkbox' name='subscribe' value='yes'>
+                            <label for='subscribe'><span class="index-input-subscribe-txt">Quero receber novidades no e-mail.</span>
+                            </label>
+                            </input>
+                        </div>
+                        <button>Simular</button>
                 </form>
                 <div class="index-partner">
                     Em parceria com<br>
-                    <img src='https://www.beluga.eng.br/voltac_logo.jpg' />
+                    <img src='./images/voltac_logo.jpg' />
                 </div>
                 <div class="footer"><br>
                     Beluga - @belugaengenharia

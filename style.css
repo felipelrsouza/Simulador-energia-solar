@@ -149,6 +149,7 @@ body {
 
 .index-partner > img {
   width: 190px;
+  margin-
 }
 
 @media only screen and (max-width: 805px) {
@@ -162,7 +163,7 @@ body {
 /* Start of the first container code */
 .top-bcg {
   /* Set the background of the first container */
-  background-image: url('https://beluga.eng.br/fundo5.jpg');
+  background-image: url('./images/main-background.jpg');
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
@@ -377,7 +378,7 @@ button:hover {
   width: 99%;
   margin: 0 auto;
   height: 260px;
-  background: url('https://www.beluga.eng.br/img1.jpeg') no-repeat 50% 80%;
+  background: url('./images/img1.jpeg') no-repeat 50% 80%;
   border-style: solid;
   border-width: 1px;
   border-color: #bebebe;

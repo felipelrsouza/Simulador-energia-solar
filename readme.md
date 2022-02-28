@@ -1,5 +1,7 @@
 # Simulador de Orçamento de Sistema de Energia Solar
 
+[Ver projeto ao vivo.](https://www.beluga.eng.br/portfolio/simulador-solar/)
+
 Criado para oferecer a simulação de orçamento para implantação e economia de um sistema de geração com placas solares. Originalmente planejado para compor o site da BELUGA Engenharia como landing page. 
 
 O usuário insere os dados de consumo do imóvel, que é registrada no banco de dados em SQL e processada em PHP para o cálculo do orçameno estimado.

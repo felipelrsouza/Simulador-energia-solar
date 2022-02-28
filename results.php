@@ -230,25 +230,25 @@ $budget = -0.6412 * ($number_of_plates ^ 2) + 1747.7 * ($number_of_plates) + 816
         </form>
         <h1>Por que ter energia solar?</h1><br>
         <section class='block-3'>
-            <div><img src="https://www.beluga.eng.br/icon1.png" />
+            <div><img src="./images/icon1.png" />
                 <p>
                     Perfeita para a sua casa, comércio ou indústria.
                     <br>A energia solar pode ser instalada em diversos tipos de imóveis.
                 </p>
             </div>
-            <div><img src="https://www.beluga.eng.br/icon3.png" />
+            <div><img src="./images/icon3.png" />
                 <p>
                     A conta de energia aumenta ano após ano.
                     <br>Mais de 30% de aumento nos últimos 5 anos.
                 </p>
             </div>
-            <div><img src="https://www.beluga.eng.br/icon2.png" />
+            <div><img src="./images/icon2.png" />
                 <p>
                     Economia enquanto ajuda o meio ambiente.<br>
                     Energia limpa sem emissão de CO2.
                 </p>
             </div>
-            <div><img src="https://www.beluga.eng.br/icon4.png" />
+            <div><img src="./images/icon4.png" />
                 <p>
                     Estado com posição geográfica favorável à energia solar.
                     <br>Maior eficiência, com mais energia gerada por área.
