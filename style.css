@@ -175,7 +175,7 @@ body {
 }
 
 .block-1-bcg {
-  background-image: linear-gradient(rgba(7, 20, 45, 0.5), rgba(7, 20, 45, 0.6));
+  background-image: linear-gradient(rgba(27, 40, 65, 0.5), rgba(7, 20, 45, 0.6));
 }
 
 .block-1 {
@@ -196,6 +196,11 @@ body {
 
 .block-1-item {
   font-weight: 600;
+}
+
+.block-1-item-left {
+  margin-left: auto;
+  margin-right: 20px;
 }
 
 .block-1-price {
@@ -221,11 +226,6 @@ body {
   height: fit-content;
 }
 
-.block-1-item-left {
-  margin-left: auto;
-  margin-right: 20px;
-}
-
 .block-1-note {
   margin-left: auto;
   width: auto;
@@ -249,7 +249,7 @@ body {
   grid-template-columns: repeat(12, 8.35%);
   align-items: end;
   height: 210px;
-  width: 100%;
+  width:auto;
 }
 
 .block-1-graphic > div {
@@ -432,6 +432,10 @@ button:hover {
     height: 35px;
   }
 
+  .block-1-item {
+    padding: 0 5px 0 5px;
+  }
+
   .block-1-container {
     margin-top: 5px;
     margin-bottom: 0px;
@@ -446,9 +450,6 @@ button:hover {
   .block-1-container > div {
     height: fit-content;
     margin: 0 auto;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-bottom: 15px;
   }
 
   .block-1-price {
@@ -459,10 +460,12 @@ button:hover {
 
   .block-1-graphic {
     height: 125px;
+    padding: 0 5px 0 5px;
   }
 
   .block-1-graphic-under {
-    width: 99%;
+    width: auto;
+    padding: 0 5px 0 5px;
   }
 
   .block-1-graphic-under > div  {
@@ -470,9 +473,13 @@ button:hover {
     display: flex;
     justify-content: left;
     align-items: center;
-    width: 99%;
-    padding-top: 5px;
-    padding-left: 10%;
+    width:auto;
+    padding: 5px 0 10% 0;
+    font-size: 13px;
+  }
+
+  .block-1-note {
+  padding: 0 5px 0 5px;
   }
 }
 
